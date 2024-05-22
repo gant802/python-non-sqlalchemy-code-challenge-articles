@@ -145,12 +145,12 @@ class Magazine:
     @classmethod
     def top_publisher(cls): #! Returns magazine instance with the most articles
         is_articles = False
-        for magazine in cls.all:
+        for magazine in cls.all: #! Checks each instance of magazine and sets is_articles to True if there is more than 0 articles in any magazines
             if [article for article in Article.all if article.magazine == magazine]:
                 is_articles = True
         if is_articles == True:
-            top_magazine_publisher = max(cls.all, key=lambda magazine: len(magazine.articles()))
-            return top_magazine_publisher
+            top_publisher = max(cls.all, key=lambda magazine: len(magazine.articles())) #! Use's lambda as a key method to check which magazine has the most articles
+            return top_publisher
         else : 
             return None
         
